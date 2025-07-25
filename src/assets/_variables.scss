@@ -1,0 +1,20 @@
+// Colors
+$color-primary: #43AA8B;
+$color-secondary: #F24236;
+$color-accent: #153F66;
+$color-background: #0F2D4A;
+$color-text: #F0F7F4;
+
+
+// Fonts
+$font-family: "Popppins";
+$font-weights: (
+    "Light":300,
+    "Regular":400,
+    "Bold": 600,
+    "Black":900
+);
+
+// Common
+$border-radius: 15px;
+$table-border: thin solid $color-text;

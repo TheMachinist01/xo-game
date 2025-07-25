@@ -1,0 +1,112 @@
+@each $weight-name, $weight in $font-weights {
+    @font-face {
+        font-family: $font-family;
+        font-style: normal;
+        font-weight: $weight;
+        src: url("./fonts/#{$font-family}-#{$weight-name}.ttf"),
+        url("./fonts/#{$font-family}-#{$weight-name}.ttf") format("truetype");
+    }
+}
+
+// base
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: $color-background;
+    color: $color-text;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 990px;
+    max-height: calc(100vh - 40px);
+    padding: 20px;
+    overflow: hidden;
+
+    h1 {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 32px;
+    }
+
+    @media screen and (max-width:990px) {
+        width: 768px;
+
+        h1 {
+            font-size: 28px;
+        }
+    }
+
+    @media screen and (max-width:768px) {
+        width: calc(100% - 40px);
+        gap: 10px;
+
+        h1 {
+            font-size: 24px;
+        }
+    }
+
+    @media screen and (max-width:545px) {
+        h1 {
+            font-size: 20px;
+        }
+    }
+}
+
+a {
+    text-decoration: none;
+    color: $color-background;
+}
+
+// Ripple Effect
+.ripple-btn {
+    position: relative;
+    overflow: hidden;
+
+    .text {
+        position: relative;
+        z-index: 1;
+    }
+
+    .ripple-effect {
+        --ripple-bg: #{darken($color-primary, 20%)};
+
+        position: absolute;
+        border-radius: 50%;
+        transform: scale(0);
+
+        @if var(--remain) {
+            transform: scale(3);
+            opacity: var(--opacity);
+        }
+
+        background-color: var(--ripple-bg);
+        animation: pulse var(--duration) linear;
+
+        @keyframes pulse {
+            from {
+                transform: scale(0);
+                opacity: 0.8;
+            }
+
+            to {
+                transform: scale(var(--scale));
+                opacity: var(--opacity);
+            }
+        }
+    }
+}
